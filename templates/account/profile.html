@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-3">
+                <p><strong>Username :</strong> {{ user_url.profile.name }}</p>
+            </div>
+
+            <div class="col-lg-3">
+                <p><strong>Email :</strong>  {{ user_url.email }}</p>
+            </div>
+
+            <div class="col-lg-3">
+                <p><strong>Location : {{ user_url.profile.location }}</strong> {{ user_url.profile.location.name }}</p>
+            </div>
+
+            <div class="col-lg-3">
+                <p><strong>Job :</strong> {{ user_url.profile.job }}</p>
+            </div>
+
+            <div class="col-lg-12">
+                <p><strong>What I do ?</strong></p>
+                <p>{{ user_url.profile.description }}</p>
+            </div>
+            {% if user.username  == user_url.profile.name %}
+            <div class="col-lg-12">
+                <p><a href="{% url 'edit_profile' %}">Edit User Profile</a></p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

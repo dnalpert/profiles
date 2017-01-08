@@ -1,0 +1,50 @@
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'index' %}">Market Place</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gigs<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'all_gigs_details' %}">Gigs</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Manage my gigs...</li>
+                <li><a href="{% url 'add_gigs_details' %}">Add a Gig</a></li>
+                <li><a href="{% url 'own_gigs_details' %}">My Gigs</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'account_logout' %}">logout</a></li>
+                {% else %}
+                <li><a href="{% url 'account_signup' %}">Sign up</a></li>
+                <li><a href="{% url 'account_login' %}">Sign in</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Manage my profile...</li>
+                <li><a href="{% url 'profile' user.username %}">Profile</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            <li><a href="{% url 'checkout' %}">Checkout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
