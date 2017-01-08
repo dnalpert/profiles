@@ -13,8 +13,3 @@ class profileForm(forms.ModelForm):
             "description":forms.Textarea(attrs={'placeholder':'Résumé votre quotidien...'}),
             "location": CountrySelectWidget()
         }
-
-
-"""
-"image":forms.FileInput(attrs={'accept':'image/jpeg image/png image/gif', 'placeholder':'A', 'id':'uploadBtn'}),
-"""
